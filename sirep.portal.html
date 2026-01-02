@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>SIREP – NEXUS Unified Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --dz-green:#006633;
+    --dz-red:#D21034;
+    --dz-blue:#142850;
+    --card:#1f2b45;
+    --accent:#ffd54f;
+  }
+  *{box-sizing:border-box;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  body{margin:0;background:linear-gradient(180deg,#0b1630,#050915);color:#fff;}
+  .container{max-width:960px;margin:0 auto;padding:16px;}
+  header{text-align:center;margin-bottom:14px;}
+  header h1{margin:4px 0;font-size:1.6rem;color:var(--accent);}
+  header h2{margin:2px 0;font-size:0.95rem;font-weight:400;}
+  header small{display:block;font-size:0.7rem;opacity:.85;}
+  .flag{font-size:1.1rem;margin-left:4px;}
+  .lang-switch{display:flex;justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;}
+  .lang-btn{padding:5px 10px;border-radius:18px;border:none;cursor:pointer;font-size:0.75rem;}
+  .lang-btn.active{background:var(--dz-green);color:#fff;}
+  .lang-btn:not(.active){background:#eee;color:#222;}
+  nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px;}
+  .nav-btn{padding:6px 12px;border-radius:18px;border:none;cursor:pointer;font-size:0.75rem;color:#fff;}
+  .nav-btn.energy{background:#19a34a;}
+  .nav-btn.health{background:#f8a51a;}
+  .nav-btn.maint{background:#5c6bc0;}
+  .nav-btn.train{background:#26a69a;}
+  .section{margin:10px 0;}
+  .card{background:var(--card);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 6px 16px rgba(0,0,0,.35);}
+  .card-title{font-weight:600;margin-bottom:8px;font-size:0.95rem;display:flex;justify-content:space-between;align-items:center;}
+  .badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:0.7rem;background:rgba(0,0,0,.35);}
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:6px;}
+  .metric{background:#121a2b;border-radius:12px;padding:8px;font-size:0.8rem;text-align:center;}
+  .metric span{display:block;font-size:0.7rem;opacity:.8;}
+  table{width:100%;border-collapse:collapse;font-size:0.75rem;margin-top:6px;}
+  th,td{padding:6px;border-bottom:1px solid rgba(255,255,255,.18);text-align:center;}
+  th{background:rgba(0,0,0,.3);}
+  .footer{margin:16px 0 8px;text-align:center;font-size:0.65rem;opacity:.75;}
+  .lang-block{display:none;}
+  .lang-block.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- رأس البوابة -->
+  <header id="header-text">
+    <small>الجمهورية الجزائرية الديمقراطية الشعبية</small>
+    <small>SIREP – NEXUS Unified Portal</small>
+    <h1>SIREP • ONE • TRIO • NEXUS<span class="flag">🇩🇿</span></h1>
+    <h2>بوابة موحّدة للطاقة، الصحة، الصيانة، والتدريب</h2>
+  </header>
+
+  <!-- أزرار اللغة -->
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="ar">العربية</button>
+    <button class="lang-btn" data-lang="fr">Français</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="tz">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+  </div>
+
+  <!-- تنقّل الأقسام -->
+  <nav>
+    <button class="nav-btn energy" onclick="gotoSection('energy')">⚡ الطاقة</button>
+    <button class="nav-btn health" onclick="gotoSection('health')">🩺 الصحة/الطوارئ</button>
+    <button class="nav-btn maint" onclick="gotoSection('maint')">🛠 الأعطال والصيانة</button>
+    <button class="nav-btn train" onclick="gotoSection('train')">🎓 التدريب المهني</button>
+  </nav>
+
+  <!-- قسم الطاقة SIREP-ONE -->
+  <section id="energy" class="section">
+    <div class="card">
+      <div class="card-title">
+        <span>⚡ SIREP‑ONE v4.0 – Energy</span>
+        <span class="badge">Demo • Offline‑Ready</span>
+      </div>
+      <p style="font-size:0.8rem;">
+        لوحة مبسّطة لمؤشرات الطاقة، مستوحاة من SIREP‑ONE v4.0:
+        التوفّر، زمن المسح، حرارة اللوحة، وسرعة الإدخال/الإخراج.
+      </p>
+      <div class="metrics">
+        <div class="metric">
+          99.999%
+          <span>Availability</span>
+        </div>
+        <div class="metric">
+          1.8 ms
+          <span>Scan time</span>
+        </div>
+        <div class="metric">
+          47 °C
+          <span>Panel temp</span>
+        </div>
+        <div class="metric">
+          12.5 M/s
+          <span>I/O throughput</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الصحة والطوارئ (TRIO/PathCare) -->
+  <section id="health" class="section">
+    <div class="card">
+      <div class="card-title">
+        <span>🩺 SIREP‑TRIO Health • Crisis</span>
+        <span class="badge">إرشادي/تعليمي</span>
+      </div>
+      <div class="grid-2">
+        <div>
+          <p style="font-size:0.8rem;">
+            مسار مبسّط لفرز الحالة الصحية: أدخل العمر، الأعراض،
+            ودرجة الوعي للحصول على مستوى إنذار تقريبي (ليس تشخيصاً).
+          </p>
+          <label style="font-size:0.8rem;">العمر (سنوات)</label>
+          <input type="number" min="0" max="120" style="width:100%;padding:6px;border-radius:10px;border:none;">
+          <label style="font-size:0.8rem;margin-top:6px;">الأعراض الرئيسية</label>
+          <select style="width:100%;padding:6px;border-radius:10px;border:none;">
+            <option>اختر / Choose…</option>
+            <option>ألم شديد في الصدر</option>
+            <option>ضيق نفس</option>
+            <option>حمى وصداع</option>
+            <option>جروح أو نزيف</option>
+          </select>
+          <label style="font-size:0.8rem;margin-top:6px;">درجة الوعي</label>
+          <select style="width:100%;padding:6px;border-radius:10px;border:none;">
+            <option>يعي تماماً / Alert</option>
+            <option>مشوش / Confused</option>
+            <option>لا يستجيب / Unresponsive</option>
+          </select>
+          <button class="nav-btn health" style="width:100%;margin-top:8px;border:none;">🧮 حساب مستوى الإنذار</button>
+          <p style="font-size:0.7rem;opacity:.8;margin-top:4px;">
+            هذه الأداة للتوعية فقط ولا تُغني عن الاتصال الفوري بخدمات الطوارئ أو زيارة الطبيب.
+          </p>
+        </div>
+        <div>
+          <p style="font-size:0.8rem;font-weight:600;">أرقام الطوارئ – الجزائر</p>
+          <table>
+            <thead>
+              <tr>
+                <th>الخدمة</th><th>الرقم</th><th>ملاحظة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>الحماية المدنية</td><td>14</td><td>إطفاء وإسعاف وإنقاذ</td></tr>
+              <tr><td>الشرطة</td><td>17</td><td>الأمن العام</td></tr>
+              <tr><td>الدرك الوطني</td><td>1055</td><td>الطرقات والمناطق الريفية</td></tr>
+              <tr><td>SAMU</td><td>16</td><td>نقل طبي مستعجل (حيث متوفر)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الأعطال والصيانة -->
+  <section id="maint" class="section">
+    <div class="card">
+      <div class="card-title">
+        <span>🛠 قاعدة معرفة SIREP للأعطال والصيانة (مختصرة)</span>
+      </div>
+      <p style="font-size:0.8rem;">
+        مثال مصغّر من جدولك: الأعراض، السبب المحتمل، والتصحيح المقترح،
+        لتدريب التقنيّين والطلبة على التفكير المنهجي في الأعطال.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>العطل</th>
+            <th>العَرَض (Symptom)</th>
+            <th>السبب المحتمل</th>
+            <th>الحلّ التصحيحي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>توقف مفاجئ للمحوّل</td>
+            <td>انقطاع تغذية / ضجيج غير عادي</td>
+            <td>ارتفاع حرارة / عطل في Bearing</td>
+            <td>فحص التبريد، قياس العزل، تغيير bearing عند الحاجة</td>
+          </tr>
+          <tr>
+            <td>هبوط جهد في خط معيّن</td>
+            <td>انخفاض القراءة في اللوحة</td>
+            <td>تماس ضعيف أو كابل متعب</td>
+            <td>فحص التوصيلات، شدّ البراغي، استبدال الكابل المتضرّر</td>
+          </tr>
+          <tr>
+            <td>توقّف متكرّر لمنظومة PV</td>
+            <td>Trip متكرر للـ inverter</td>
+            <td>تحميل زائد أو خطأ إعدادات</td>
+            <td>مراجعة إعدادات الحماية، حساب الأحمال وربطها بشكل متوازن</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- قسم التدريب المهني -->
+  <section id="train" class="section">
+    <div class="card">
+      <div class="card-title">
+        <span>🎓 NEXUS‑SIREP Training Pro (مختصر)</span>
+      </div>
+      <p style="font-size:0.8rem;">
+        مسارات للتدريب الإداري، التقني/الطاقوي، والمجتمعي، مستوحاة من
+        NEXUS‑SIREP Training Pro، يمكن ربطها بدورات ومراكز تكوين لاحقاً.
+      </p>
+      <div class="grid-2">
+        <div class="card" style="background:#243155;">
+          <div class="card-title"><span>مسار إداري</span></div>
+          <p style="font-size:0.78rem;">
+            مهارات التسيير، كتابة التقارير، المتابعة الرقمية للمشاريع،
+            وأساسيات القانون الإداري والمالي للمؤسّسات الصغيرة.
+          </p>
+        </div>
+        <div class="card" style="background:#243155;">
+          <div class="card-title"><span>مسار تقني/طاقوي</span></div>
+          <p style="font-size:0.78rem;">
+            قراءة مخططات الكهرباء، تشغيل وصيانة منظومات الطاقة المتجددة،
+            وإدارة السلامة في مواقع العمل الصناعية.
+          </p>
+        </div>
+        <div class="card" style="background:#243155;">
+          <div class="card-title"><span>مسار مجتمعي</span></div>
+          <p style="font-size:0.78rem;">
+            تصميم مبادرات شبابية، استخدام بنك التنميحة، والتواصل مع
+            الجمعيات والبلديات لتنفيذ مشاريع محلّية صغيرة.
+          </p>
+        </div>
+        <div class="card" style="background:#243155;">
+          <div class="card-title"><span>خطة تعلّم شخصية</span></div>
+          <p style="font-size:0.78rem;">
+            تتبع تقدّمك في الدورات، وتحديد أهداف شهرية في الصحة، الحقوق،
+            والمهارات المهنية ضمن منظومة SIREP كاملة.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer" id="footer-text">
+    SIREP • ONE • TRIO • NEXUS – Demo Portal 2025<br>
+    هذه الصفحة نموذج تعليمي/تجريبي ولا تغني عن الخدمات الطبية أو القانونية أو التقنية الرسمية.
+  </div>
+
+</div>
+
+<script>
+  // تمرير إلى قسم
+  function gotoSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
+
+  const headerTexts={
+    ar:{s1:'الجمهورية الجزائرية الديمقراطية الشعبية',
+        s2:'SIREP – NEXUS بوابة موحّدة',
+        h2:'منصة واحدة للطاقة والصحة والصيانة والتدريب'},
+    fr:{s1:'République Algérienne Démocratique et Populaire',
+        s2:'SIREP – NEXUS Portail unifié',
+        h2:'Plateforme unique pour énergie, santé, maintenance et formation'},
+    en:{s1:'People’s Democratic Republic of Algeria',
+        s2:'SIREP – NEXUS Unified Portal',
+        h2:'One portal for energy, health, maintenance and training'},
+    tz:{s1:'ⵜⴰⵎⴰⵣⵉⵖⵜ ⵏ ⴷⵣⴰⵢⵔ – Dzayer',
+        s2:'SIREP – NEXUS ⴰⵣⵓⵍ ⵏ ⵓⵙⵙⵓⵔ',
+        h2:'ⴰⵣⵓⵍ ⵓⵎⵔⵓⵖ ⵏ ⵜⵓⵙⵙⵓⵔ, ⵜⵙⵙⴰ, ⵜⵙⴽⵔⵓⵙ d ⵜⵓⵙⵙⴰⵏ'}
+  };
+
+  const langBtns=document.querySelectorAll('.lang-btn');
+  const headerEl=document.getElementById('header-text');
+  const footerEl=document.getElementById('footer-text');
+
+  function setLang(lang){
+    langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+    const t=headerTexts[lang];
+    if(t){
+      const s=headerEl.getElementsByTagName('small');
+      const h2=headerEl.getElementsByTagName('h2')[0];
+      s[0].textContent=t.s1;
+      s[1].textContent=t.s2;
+      h2.textContent=t.h2;
+    }
+    document.body.dir=(lang==='ar'||lang==='tz')?'rtl':'ltr';
+  }
+
+  langBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>setLang(btn.dataset.lang));
+  });
+</script>
+
+</body>
+</html>
